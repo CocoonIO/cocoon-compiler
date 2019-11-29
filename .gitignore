@@ -1,0 +1,17 @@
+### Intellij IDEA
+.idea
+*.iml
+
+### VS Code
+.vscode
+
+### NPM
+node_modules
+*.log
+
+### Proyect
+build
+*.js
+
+### Other
+log

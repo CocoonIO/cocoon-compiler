@@ -1,0 +1,215 @@
+{
+    "apps": [
+        {
+            "name": "cocoon-api",
+            "script": "build/api.js",
+            "merge_logs": true,
+            "error_file": "log/api-err.log",
+            "out_file": "log/api-out.log",
+            "env": {
+                "KILL_TIMEOUT": 1800000
+            },
+            "kill_timeout": 1800000,
+            "restart_delay": 120000,
+            "min_uptime": 10000,
+            "max_restarts": 15,
+            "env_develop": {
+                "NODE_ENV": "develop",
+                "ENV": "develop",
+                "LOGLEVEL": "debug"
+            },
+            "env_testing": {
+                "NODE_ENV": "testing",
+                "ENV": "testing",
+                "LOGLEVEL": "debug"
+            },
+            "env_production": {
+                "NODE_ENV": "production",
+                "ENV": "production",
+                "LOGLEVEL": "debug"
+            }
+        },
+        {
+            "name": "cocoon-compiler",
+            "script": "build/compiler.js",
+            "merge_logs": true,
+            "error_file": "log/compiler-err.log",
+            "out_file": "log/compiler-out.log",
+            "env": {
+                "KILL_TIMEOUT": 1800000
+            },
+            "kill_timeout": 1800000,
+            "restart_delay": 120000,
+            "min_uptime": 10000,
+            "max_restarts": 15,
+            "env_develop": {
+                "NODE_ENV": "develop",
+                "ENV": "develop",
+                "LOGLEVEL": "debug"
+            },
+            "env_testing": {
+                "NODE_ENV": "testing",
+                "ENV": "testing",
+                "LOGLEVEL": "debug"
+            },
+            "env_production": {
+                "NODE_ENV": "production",
+                "ENV": "production",
+                "LOGLEVEL": "debug"
+            }
+        },
+        {
+            "name": "cocoon-notifier",
+            "script": "build/notifier.js",
+            "merge_logs": true,
+            "error_file": "log/notifier-err.log",
+            "out_file": "log/notifier-out.log",
+            "env": {
+                "KILL_TIMEOUT": 1800000
+            },
+            "kill_timeout": 1800000,
+            "restart_delay": 120000,
+            "min_uptime": 10000,
+            "max_restarts": 15,
+            "env_develop": {
+                "NODE_ENV": "develop",
+                "ENV": "develop",
+                "LOGLEVEL": "debug"
+            },
+            "env_testing": {
+                "NODE_ENV": "testing",
+                "ENV": "testing",
+                "LOGLEVEL": "debug"
+            },
+            "env_production": {
+                "NODE_ENV": "production",
+                "ENV": "production",
+                "LOGLEVEL": "debug"
+            }
+        },
+        {
+            "name": "cocoon-updater",
+            "script": "build/updater.js",
+            "merge_logs": true,
+            "error_file": "log/updater-err.log",
+            "out_file": "log/updater-out.log",
+            "env": {
+                "KILL_TIMEOUT": 1800000
+            },
+            "kill_timeout": 1800000,
+            "restart_delay": 120000,
+            "min_uptime": 10000,
+            "max_restarts": 15,
+            "env_develop": {
+                "NODE_ENV": "develop",
+                "ENV": "develop",
+                "LOGLEVEL": "debug"
+            },
+            "env_testing": {
+                "NODE_ENV": "testing",
+                "ENV": "testing",
+                "LOGLEVEL": "debug"
+            },
+            "env_production": {
+                "NODE_ENV": "production",
+                "ENV": "production",
+                "LOGLEVEL": "debug"
+            }
+        }
+    ],
+    "deploy": {
+        "develop-local": {
+            "user": "ideateca",
+            "host": "localhost",
+            "ref": "origin/develop",
+            "repo": "ssh://git@bitbucket.org:22/ludei/cocoon-compiler.git",
+            "path": "../opt/cocoon_compiler/app/develop",
+            "post-deploy": "git checkout develop ; bash ./deploy.sh develop",
+            "env": {
+                "NODE_ENV": "develop",
+                "ENV": "develop",
+                "LOGLEVEL": "debug"
+            }
+        },
+        "testing": {
+            "user": "ideateca",
+            "host": process.env.HOSTS?JSON.parse(process.env.HOSTS): [],
+            "ref": "origin/testing",
+            "repo": "ssh://git@bitbucket.org:22/ludei/cocoon-compiler.git",
+            "path": "../opt/cocoon_compiler/app/testing",
+            "post-deploy": "git checkout testing ; bash ./deploy.sh testing",
+            "env": {
+                "NODE_ENV": "testing",
+                "ENV": "testing",
+                "LOGLEVEL": "debug"
+            }
+        },
+        "testing-local": {
+            "user": "ideateca",
+            "host": [
+                {
+                    "host": "localhost",
+                    "port": "2222"
+                }
+            ],
+            "ref": "origin/testing",
+            "repo": "ssh://git@bitbucket.org:22/ludei/cocoon-compiler.git",
+            "path": "../opt/cocoon_compiler/app/testing",
+            "post-deploy": "git checkout testing ; bash ./deploy.sh testing",
+            "env": {
+                "NODE_ENV": "testing",
+                "ENV": "testing",
+                "LOGLEVEL": "debug"
+            }
+        },
+        "testing-kitchen": {
+            "user": "ideateca",
+            "host": [
+                {
+                    "host": "localhost",
+                    "port": "22"
+                }
+            ],
+            "ref": "origin/testing",
+            "repo": "ssh://git@bitbucket.org:22/ludei/cocoon-compiler.git",
+            "path": "../opt/cocoon_compiler/app/testing",
+            "post-deploy": "git checkout testing ; bash ./deploy.sh testing",
+            "env": {
+                "NODE_ENV": "testing",
+                "ENV": "testing",
+                "LOGLEVEL": "debug"
+            }
+        },
+        "production": {
+            "user": "ideateca",
+            "host": process.env.HOSTS?JSON.parse(process.env.HOSTS): [],
+            "ref": "origin/master",
+            "repo": "ssh://git@bitbucket.org:22/ludei/cocoon-compiler.git",
+            "path": "../opt/cocoon_compiler/app/production",
+            "post-deploy": "bash ./deploy.sh production",
+            "env": {
+                "NODE_ENV": "production",
+                "ENV": "production",
+                "LOGLEVEL": "debug"
+            }
+        },
+        "production-local": {
+            "user": "ideateca",
+            "host": [
+                {
+                    "host": "localhost",
+                    "port": "2222"
+                }
+            ],
+            "ref": "origin/master",
+            "repo": "ssh://git@bitbucket.org:22/ludei/cocoon-compiler.git",
+            "path": "../opt/cocoon_compiler/app/production",
+            "post-deploy": "bash ./deploy.sh production",
+            "env": {
+                "NODE_ENV": "production",
+                "ENV": "production",
+                "LOGLEVEL": "debug"
+            }
+        }
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "version": "2.9.2",
+    "compilerOptions": {
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "lib": [
+            "dom",
+            "es2018"
+        ],
+        "target": "es6",
+
+        "preserveConstEnums": true,
+        "removeComments": true,
+
+        "sourceMap": true,
+        "outDir": "build",
+
+        "declaration": false,
+
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": false
+    },
+    "include": [
+        "src/**/*",
+        "custom_typings/**/*"
+    ]
+}

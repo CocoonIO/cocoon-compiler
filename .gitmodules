@@ -1,0 +1,3 @@
+[submodule "cocoon-compiler-tester"]
+	path = cocoon-compiler-tester
+	url = git@github.com:CocoonIO/cocoon-compiler-tester.git

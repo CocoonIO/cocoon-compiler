@@ -1,0 +1,9 @@
+{
+	"extends": "tslint:recommended",
+	"rules" : {
+		"indent": [true, "spaces"],
+		"no-console": [true, "debug", "time", "timeEnd"],
+        "semicolon": [true, "always", "ignore-bound-class-methods"],
+        "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore", "allow-trailing-underscore"]
+	}
+}
