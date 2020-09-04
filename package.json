@@ -40,7 +40,7 @@
     "klaw": "2.1.1",
     "klaw-sync": "4.0.0",
     "log4js": "3.0.2",
-    "mongodb": "3.1.1",
+    "mongodb": "3.6.1",
     "mongodb-queue": "3.1.0",
     "passport": "0.4.0",
     "passport-http-header-token": "1.1.0",
